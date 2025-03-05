@@ -58,3 +58,6 @@ Note
 ----
 
 The voting application only accepts one vote per client. It does not register votes if a vote has already been submitted from a client.
+
+[![Build Status](http://440f-2803-a3e0-11e1-e9e0-25f0-3359-b627-4fac.ngrok-free.app/buildStatus/icon?job=instavote%2Fworker-build)](http://440f-2803-a3e0-11e1-e9e0-25f0-3359-b627-4fac.ngrok-free.app/job/instavote/job/worker-build/)
+
