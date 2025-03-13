@@ -1,8 +1,9 @@
 pipeline { 
-    agent any
-
-    tools{
-      maven 'maven 3.9.8'
+    agent{
+       docker{
+         image 'maven:3.9.8-sapmachine-21'
+         args '-v $HOME/.m2:/root/.m2'
+       }
     }
 
     stages{
@@ -27,6 +28,7 @@ pipeline {
               echo 'Packaging worker app'
               dir('worker'){
                 sh 'mvn package -DskipTests'
+                archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
               }
           }
       }
@@ -34,8 +36,7 @@ pipeline {
 
     post{
      always{
-         archiveArtifacts artifacts: '**/target/*.jar', fingerprint: true
-         echo 'Building multibranch pipeline for worker is completed..'
+         echo 'The job is complete'
      }
     }
 }
